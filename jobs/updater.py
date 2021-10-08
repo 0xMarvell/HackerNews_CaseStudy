@@ -1,8 +1,8 @@
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
-from .jobs import get_latest_news
+from .jobs import save_news_to_DB
 
 def start():
 	scheduler = BackgroundScheduler()
-	scheduler.add_job(get_latest_news, 'interval', seconds=5)
+	scheduler.add_job(save_news_to_DB, 'interval', seconds=10)
 	scheduler.start()

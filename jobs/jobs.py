@@ -19,12 +19,15 @@ def save_news_to_DB():
     response = requests.get(url).json()
     if response:
         new_stories = response[0:99]
-        print(new_stories)
-
-    
-    story_url = 'https://hacker-news.firebaseio.com/v0/item/{item-id}.json'
-    story_response = requests.get(story_url).json()
+        # print(new_stories)
 
     for id in new_stories:
         if id in new_stories:
             return id
+    
+    story_url = 'https://hacker-news.firebaseio.com/v0/item/{item_id}.json'
+
+    story_response = requests.get(story_url.format(item_id=id)).json()
+    print(story_response)
+    # title = story_response{'title'}
+    # print(title)
