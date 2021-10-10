@@ -5,17 +5,18 @@ from django.conf import settings
 
 from published_news.models import PublishedNews
 
+# I used this piece of code to test how to get list of IDs for newest stories
 
-def get_latest_news():
+# def get_latest_news():
     
-    """This function retrieves the 100 newest stories published on the hacker news website.
-    It returns a list of story IDs."""
+#     """This function retrieves the 100 newest stories published on the hacker news website.
+#     It returns a list of story IDs."""
 
-    url = 'https://hacker-news.firebaseio.com/v0/newstories.json'
-    response = requests.get(url).json()
-    if response:
-        new_stories = response[0:99]
-        print(new_stories)
+#     url = 'https://hacker-news.firebaseio.com/v0/newstories.json'
+#     response = requests.get(url).json()
+#     if response:
+#         new_stories = response[0:99]
+#         print(new_stories)
 
 
 def save_news_to_DB():
@@ -27,8 +28,6 @@ def save_news_to_DB():
     url = 'https://hacker-news.firebaseio.com/v0/newstories.json'
     r = requests.get(url)
     article_ids = r.json()
-    # if response:
-    #     new_stories = response[0:100]
 
     for article_id in article_ids[:50]:
         story_url = 'https://hacker-news.firebaseio.com/v0/item/{item_id}.json'
@@ -43,16 +42,12 @@ def save_news_to_DB():
             item_type= one_article['type'],
             comments= one_article['descendants']
             )
-        # print(story_data.objects.all())
-        if str(story_data.title) not in str(list(PublishedNews.objects.all())):
-            story_data.save()
+            
+        if str(story_data.title) not in str(list(PublishedNews.objects.all())): #if the retrieved data does not exist in the local database
+            story_data.save() 
         else:
             print('already in db')
-            continue
+            continue # skip over any retrieved data already saved in the database and keep looping
         all_news = PublishedNews.objects.all().order_by('-id')
         print(all_news)
-        # print()
-        
-    # for story_data in story_response:
-
 
