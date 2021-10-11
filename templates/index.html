@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,24 +21,25 @@
           <table class="table manage-candidates-top mb-0">
             <thead>
               <tr>
-                <th>Tech News Feed</th>
+                <th><h3>Tech News Feed</h3></th>
               </tr>
             </thead>
+          {% for article in page_obj.object_list %}  
             <tbody>
               <tr class="candidates-list">
                 <td class="title">
                   <div class="thumb">
-                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                    <img class="img-fluid" src="{% static 'avatar1.png' %}" alt="">
                   </div>
                   <div class="candidate-list-details">
                     <div class="candidate-list-info">
                       <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">Brooke Kelly</a></h5>
+                        <h5 class="mb-0"><a href={{ article.url }}>{{ article.title }}</a></h5>
                       </div>
                       <div class="candidate-list-option">
                         <ul class="list-unstyled">
-                          <li>By: Information Technology</li>
-                          <li><i class="far fa-comment-alt pr-1"></i>Rolling Meadows, IL 60008</li>
+                          <li>By: {{ article.by }}</li>
+                          <li><i class="far fa-comment-alt pr-1"></i><a href="">{{ article.comments }}</a></li>
                         </ul>
                       </div>
                     </div>
@@ -45,17 +47,41 @@
                 </td>
               </tr>
             </tbody>
+          {% endfor %}  
           </table>
+        
           <div class="text-center mt-3 mt-sm-3">
             <ul class="pagination justify-content-center mb-0">
-              <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
+              {% comment %} <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
               <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              
               <li class="page-item"><a class="page-link" href="#">3</a></li>
               <li class="page-item"><a class="page-link" href="#">...</a></li>
               <li class="page-item"><a class="page-link" href="#">25</a></li>
-              <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
+              <li class="page-item"> <a class="page-link" href="#">Next</a> </li> {% endcomment %}
+              {%if page_obj.has_previous %} {# whether the previous page exists #}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{page_obj.previous_page_number}}">Prev</a>
+                </li> {# link to the prev page #}
+              {% endif %}
+
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">{{page_obj.number}}</span> 
+                  <span class="sr-only">(current)</span>
+                </li>
+
+              {%if page_obj.has_next %} {# whether the next page exists #}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+                  </li> {# link to the next page #}
+              {% endif %}
             </ul>
+            </br>
+            <div>
+            <span>
+              Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+            </span>
+            </div>
           </div>
         </div>
       </div>
