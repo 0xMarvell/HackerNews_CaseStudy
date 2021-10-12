@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+        <table class="table manage-candidates-top mb-0">
+            <thead>
+              <tr>
+                <th><h3>Search Results</h3></th>
+                <th>
+                    <a class="btn btn-primary col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" href="{% url 'index' %}" role="button">
+                        <i class="fas fa-home">  Home</i>
+                    </a>
+                </th>
+              </tr>
+            </thead>
+          {% for search_result in page_obj.object_list %}  
+            <tbody>
+              <tr class="candidates-list">
+                <td class="title">
+                  <div class="candidate-list-details">
+                    <div class="candidate-list-info">
+                      <div class="candidate-list-title">
+                        <h5 class="mb-0"><a href={{ search_result.url }}>{{ search_result.title }}</a></h5>
+                      </div>
+                      <div class="candidate-list-option">
+                        <ul class="list-unstyled">
+                          <li>By: {{ search_result.by }}</li>
+                          <li><i class="far fa-comment-alt pr-1"></i><a href="">{{ search_result.comments }}</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          {% endfor %}  
+        </table>
+{% endblock %}

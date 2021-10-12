@@ -29,7 +29,7 @@ def save_news_to_DB():
     r = requests.get(url)
     article_ids = r.json()
 
-    for article_id in article_ids[:50]:
+    for article_id in article_ids[:100]:
         story_url = 'https://hacker-news.firebaseio.com/v0/item/{item_id}.json'
         story_response = requests.get(story_url.format(item_id=article_id)) # get response for each story
         one_article = story_response.json()
@@ -63,7 +63,7 @@ def save_comments_to_DB():
 
     new_stories_url = 'https://hacker-news.firebaseio.com/v0/newstories.json'
     new_stories_r = requests.get(new_stories_url)
-    article_ids = new_stories_r.json()[:50]
+    article_ids = new_stories_r.json()[:100]
 
     for article_id in article_ids:
         url = 'https://hacker-news.firebaseio.com/v0/item/{item_id}/kids.json'
@@ -83,12 +83,12 @@ def save_comments_to_DB():
                     parent_id= one_comment['parent']
                     )
                     
-                if str(comment_data.text) not in str(list(PublishedNew.objects.all())): #if the retrieved data does not exist in the local database
+                if str(comment_data.text) not in str(list(Comment.objects.all())): #if the retrieved data does not exist in the local database
                     comment_data.save() 
                 else:
                     print('already in db')
                     continue # skip over any retrieved data already saved in the database and keep looping
-                all_comments = PublishedNew.objects.all().order_by('-id')
+                all_comments = Comment.objects.all().order_by('-id')
                 print(all_comments)
         else:
             print('no comments for this story')

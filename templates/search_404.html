@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+        <table class="table manage-candidates-top mb-0">
+            <thead>
+              <tr>
+                <th><h3>Entry Does not exist in database</h3></th>
+                <th>
+                    <a class="btn btn-primary col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" href="{% url 'index' %}" role="button">
+                        <i class="fas fa-home">  Home</i>
+                    </a>
+                </th>
+              </tr>
+            </thead>
+              </tr>
+            </tbody>
+        </table>
+{% endblock %}

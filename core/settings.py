@@ -42,6 +42,9 @@ INSTALLED_APPS = [
 
     # DRF
     'rest_framework',
+
+    # To help with Filtering
+    'django_filters',
 ]
 
 MIDDLEWARE = [
