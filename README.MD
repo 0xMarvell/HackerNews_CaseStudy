@@ -54,13 +54,13 @@
 
    POST - `http://127.0.0.1:8000/api/news/`
    payload - 
-       {
+       `{
         "title": string,
         "url": url,
         "by": string,
         "score": int,
         "item_type": string
-    }
+    }`
 
     Returns - The newly created news object
 
@@ -69,7 +69,7 @@
    Returns - Filtered news objects
 
 3. PUT/PATCH - `http://127.0.0.1:8000/api/news/{pk}/update`
-   payload (PUT) - {
+   payload (PUT) - `{
         "title": "Updated value",
         "url": "Updated value",
         "by": "Updated value",
@@ -77,11 +77,11 @@
         "item_type": "Updated value",
         "comments": Updated value,
         "hacker_news_id": Updated value
-    }
+    }`
 
-    payload (PATCH) - {
+    payload (PATCH) - `{
         "key": "Updated value"
-    }
+    }`
 
     Returns - Updated news object
 
