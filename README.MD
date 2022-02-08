@@ -54,13 +54,13 @@
 
    POST - `http://127.0.0.1:8000/api/news/`
    payload - 
-       `{
+       ```{
         "title": string,
         "url": url,
         "by": string,
         "score": int,
         "item_type": string
-    }`
+    }```
 
     Returns - The newly created news object
 
