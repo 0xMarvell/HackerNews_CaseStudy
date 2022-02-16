@@ -54,7 +54,7 @@
 
    POST - `http://127.0.0.1:8000/api/news/`
    payload - 
-       json```{
+       ```{
         "title": string,
         "url": url,
         "by": string,
