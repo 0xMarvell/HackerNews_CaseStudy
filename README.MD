@@ -48,13 +48,13 @@
 </ul>
 
 ### API ENDPOINTS
-1. GET - `http://127.0.0.1:8000/api/news/`
+1. GET - ```http://127.0.0.1:8000/api/news/```
    
    Returns - All news objects saved in the database
 
    POST - `http://127.0.0.1:8000/api/news/`
    payload - 
-       ```{
+       json```{
         "title": string,
         "url": url,
         "by": string,
