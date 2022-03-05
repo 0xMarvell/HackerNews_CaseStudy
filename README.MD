@@ -49,3 +49,5 @@ env/scripts/activate.bat
  ```bash
  python manage.py runserver --noreload
  ```
+
+Take a look at the API endpoints [here](./published_news/api)
