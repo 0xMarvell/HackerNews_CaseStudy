@@ -1,4 +1,4 @@
-# A case study on the Hacker News website API
+# A CASE STUDY ON THE HACKERNEWS API
 
 ## TASKS
 
@@ -19,33 +19,36 @@ It is also important to expose an API so that our data can be consumed:
 
 
 ## PROJECT SETUP
-
-    clone Project or download as zip file - 
-        <code>git clone https://github.com/Marvellous-Chimaraoke/HackerNews_CaseStudy.git
-    
-    Create virtual environment - 
-        <code>pip3 install virtualenv
-        then run <code>virtualenv env, 
-        <code>source env/bin/activate(for mac/linux), 
-        <code>env/scripts/activate.bat(for windows)
-     
-    install all requirements from requirements.txt file - 
-        <code>pip install -r requirements.txt
-    
-    Run migrations to create db tables - 
-        <code>python manage.py makemigrations 
-        then run <code>python manage.py migrate
-     
-</ul>
-
-</br>
-
-<b>Run Project Server</b>
-
-    
-    <code>python manage.py runserver --noreload
-    
-</ul>
+ - clone Project or download as zip file.
+ ```bash
+ git clone https://github.com/Marvellous-Chimaraoke/HackerNews_CaseStudy.git
+ ```
+ - Create virtual environment.
+```bash
+pip3 install virtualenv
+virtualenv env
+```
+- Activate virtual environment (MacOS/Linux).
+```bash
+source env/bin/activate
+``` 
+- Activate virtual environment (Windows).
+```bash
+env/scripts/activate.bat
+```   
+ - Install all requirements from requirements.txt file.
+ ```bash
+ pip install -r requirements.txt
+ ```
+ - Run migrations to create database tables.
+ ```bash
+ python manage.py makemigrations
+ python manage.py migrate
+ ```
+ - Run Project Server.
+ ```bash
+ python manage.py runserver --noreload
+ ```
 
 ### API ENDPOINTS
 1. GET - ```http://127.0.0.1:8000/api/news/```
